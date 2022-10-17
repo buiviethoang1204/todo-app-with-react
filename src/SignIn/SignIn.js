@@ -34,7 +34,6 @@ function SignIn() {
                 SIGN_IN_URL,
                 payload
             )
-            console.log(payload);
             const accessToken = response.data.data.accessToken
             localStorage.setItem('Token', accessToken)
             setAuth({ user, accessToken })

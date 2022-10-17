@@ -1,19 +1,20 @@
 import './App.css';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Register from './Register/Register';
 import Navbar from './Navbar/Navbar';
 import SignIn from './SignIn/SignIn';
-import Home from './Home/Home'
+import Home from './Home/Home';
+import PrivateRoutes from './PrivateRoutes/PrivateRoutes'
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path='/' element={localStorage.getItem("Token") ? <Home /> : <Navigate to='/sign_in' />}></Route>
-        <Route path='/register' element={<Register />}></Route>
-        <Route path='/sign_in' element={<SignIn />}></Route>
-      </Routes>
+    <Navbar />
+    <Routes>
+      <Route path='/' element={<PrivateRoutes><Home/></PrivateRoutes>}></Route>
+      <Route path='/register' element={<Register />}></Route>
+      <Route path='/sign_in' element={<SignIn />}></Route>
+    </Routes>
     </div>
   );
 }
