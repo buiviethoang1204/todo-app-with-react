@@ -1,0 +1,94 @@
+#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 520px;
+    min-height: 400px;
+    max-height: 800px;
+    overflow: auto;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 32px;
+    background-color: #fff;
+    position: relative;
+    margin-top: 50px;
+}
+
+#title {
+    margin: 32px 0;
+}
+
+.complete {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.todoInput {
+    padding: 14px 32px 14px 16px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid #034f29;
+    outline: none;
+    min-width: 320px;
+    background: transparent;
+    color: #333;
+}
+
+.todoBtn {
+    padding: 16px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(90deg, rgb(2, 34, 5) 0%, rgb(59, 62, 4) 100%);
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.edit {
+    margin-top: 8px;
+    background: linear-gradient(90deg, rgb(106, 215, 164) 0%, rgb(124, 234, 205) 100%);   
+}
+
+.editBtn {
+    min-width: 85.25px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.deleteIcon {
+    margin-right: 5px;
+}
+
+.editIcon {
+}
+
+.todoRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px auto;
+    color: #fff;
+    background: linear-gradient(90deg, rgb(86, 173, 147) 0%, rgb(96, 174, 177) 100%);   
+    padding: 14px;
+    border-radius: 5px;
+    width: 410px;
+    margin-bottom: 6px;
+}
+
+.logoutBtn {
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(90deg, rgb(171, 25, 25) 0%, rgb(237, 30, 30) 100%); 
+    color: #fff;
+}
