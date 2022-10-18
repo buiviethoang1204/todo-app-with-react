@@ -25,25 +25,21 @@ function TodoList() {
         if (!newValue.text)
             return
 
-        setJobs(prev => prev.map(item => {
-            if (item.id === jobId) {
-                const newJobs = [newValue, ...jobs]
-                const jsonJobs = JSON.stringify(newJobs)
-                localStorage.removeItem('jobs')
-                localStorage.setItem('jobs', jsonJobs)
-                return newValue
-            }
-            return item 
-            }
-        ))
+        setJobs(prev => prev.map(item => item.id === jobId ? newValue : item))
+        const arrayJob = jobs.map(item => item.id === jobId ? newValue : item
+        )
+        const jsonArrayJob = JSON.stringify(arrayJob)
+        localStorage.setItem('jobs', jsonArrayJob)
     }
+
+
+
 
     const removeJob = id => {
         const updateJobs = [...jobs].filter(job => job.id !== id)
         setJobs(() => {
             const newJobs = [...updateJobs]
             const jsonJobs = JSON.stringify(newJobs)
-            localStorage.removeItem('jobs')
             localStorage.setItem('jobs', jsonJobs)
             return newJobs
         })
@@ -59,7 +55,6 @@ function TodoList() {
         setJobs(() => {
             const newJobs = [...updateJobs]
             const jsonJobs = JSON.stringify(newJobs)
-            localStorage.removeItem('jobs')
             localStorage.setItem('jobs', jsonJobs)
             return newJobs
         })
