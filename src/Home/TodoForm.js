@@ -7,7 +7,7 @@ function TodoForm(props) {
 
     useEffect(() => {
         jobRef.current.focus()
-    })
+    }, [])
 
     const handleOnChange = e => {
         setJob(e.target.value)
@@ -24,25 +24,7 @@ function TodoForm(props) {
 
     return (
         <form className={styles.todoForm} onSubmit={handleSubmit}>
-            {
-                props.edit ? (
-                    <>
-                        <input
-                            ref={jobRef}
-                            type='text'
-                            placeholder='Edit todo'
-                            value={job}
-                            className={`${styles.todoInput} ${styles.edit}`}
-                            onChange={handleOnChange}
-                        />
-                        <button
-                            className={`${styles.todoBtn} ${styles.editBtn}`}
-                        >
-                            Update
-                        </button>
-                    </>
-                ) : (
-                    <>
+            
                         <input
                             ref={jobRef}
                             type='text'
@@ -56,9 +38,7 @@ function TodoForm(props) {
                         >
                             Add todo
                         </button>
-                    </>
-                )
-            }
+                    
         </form>
     )
 }

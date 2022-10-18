@@ -3,11 +3,19 @@ import Todo from './Todo'
 import TodoForm from './TodoForm'
 import styles from './style.module.css'
 
-function TodoList() {
+function TodoList({ onClick }) {
     const [jobs, setJobs] = useState(() => {
         const storageJobs = JSON.parse(localStorage.getItem('jobs'))
         return storageJobs ?? []
     })
+
+    const [editId, setEditId] = useState(false)
+    const [inputValue, setInputValue] = useState('')
+
+    const handleEdit = (id, text) => {
+        setEditId(id)
+        setInputValue(text)
+    }
 
     const handleAddJob = job => {
         if (!job.text)
@@ -21,15 +29,28 @@ function TodoList() {
         })
     }
 
-    const editJob = (jobId, newValue) => {
-        if (!newValue.text)
-            return
+    const editJob = (id, newValue) => {
+        // if (!newValue.text)
+        //     return
 
-        setJobs(prev => prev.map(item => item.id === jobId ? newValue : item))
-        const arrayJob = jobs.map(item => item.id === jobId ? newValue : item
-        )
-        const jsonArrayJob = JSON.stringify(arrayJob)
-        localStorage.setItem('jobs', jsonArrayJob)
+        // setJobs(prev => prev.map(item => item.id === jobId ? newValue : item))
+
+        // const arrayJob = jobs.map(item => item.id === jobId ? newValue : item)
+        // const jsonArrayJob = JSON.stringify(arrayJob)
+        // localStorage.setItem('jobs', jsonArrayJob)
+        // setEditId(false)
+
+        let editJobs = jobs.map(job => {
+            if (job.id === id) {
+                job.text = newValue
+            }
+            return job
+        })
+        const jsonJobs = JSON.stringify(editJobs)
+        console.log(jsonJobs);
+        localStorage.setItem('jobs', jsonJobs)
+        setJobs(editJobs)
+        setEditId(false)
     }
 
 
@@ -69,6 +90,10 @@ function TodoList() {
                 completeJob={completeJob}
                 removeJob={removeJob}
                 editJob={editJob}
+                handleEdit={handleEdit}
+                editId={editId}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
             />
         </div>
     )
